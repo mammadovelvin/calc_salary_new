@@ -227,7 +227,7 @@
 
                 let incomeTax = 0;
                 if (adjustedGross <= 2500) {
-                    incomeTax = adjustedGross * 0.03;
+                    incomeTax = (adjustedGross -200) * 0.03;
                 } else if (adjustedGross <= 8000) {
                     incomeTax = 2500*0.03 + (adjustedGross-2500)*0.10;
                 } else {
@@ -237,7 +237,7 @@
                 let dsmf = adjustedGross <= 200 ? adjustedGross * 0.03 : 6 + (adjustedGross - 200) * 0.10;
 
                 let unemployment = gross * 0.005;
-                let medical = gross <= 8000 ? gross * 0.02 : 160 + (gross - 8000) * 0.005;
+                let medical = gross <= 2500 ? gross * 0.02 : 50 + (gross - 2500) * 0.005;
 
                 let net = gross - incomeTax - dsmf - unemployment - medical - pasha;
                 return { net, incomeTax, dsmf, unemployment, medical };
@@ -271,4 +271,5 @@
     </script>
 </body>
 </html>
+
 
